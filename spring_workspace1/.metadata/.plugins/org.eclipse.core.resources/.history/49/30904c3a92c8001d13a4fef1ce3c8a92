@@ -1,0 +1,36 @@
+package com.ds.damin.common;
+
+public class Criteria {
+
+	private int pageNum=0; //현재 페이지
+	private int amount=0; //한 페이지 당 보여질 게시물 갯수
+	private String num="1";
+	public Criteria() {
+		this(1,9);
+	}
+	
+	public Criteria(int pageNum, int amount) {
+		super();
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
+
+	
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	
+}

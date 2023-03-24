@@ -1,0 +1,104 @@
+package com.ds.damin.mall;
+
+public class MallDto {
+
+	private int p_seq = 0;
+	private String p_name = "";
+	private String p_price = "";
+	private String p_contents = "";
+	private String p_size = "";
+	private String p_category = "";
+	private String p_image1 = "";
+	private String p_image2 = "";
+	private String p_image3 = "";
+	private String p_delyn = "";
+
+	public String getP_category() {
+		return p_category;
+	}
+
+	public void setP_category(String p_category) {
+		this.p_category = p_category;
+	}
+
+	public String getP_delyn() {
+		return p_delyn;
+	}
+
+	public void setP_delyn(String p_delyn) {
+		this.p_delyn = p_delyn;
+	}
+
+	public int getP_seq() {
+		return p_seq;
+	}
+
+	public void setP_seq(int p_seq) {
+		this.p_seq = p_seq;
+	}
+
+	public String getP_name() {
+		return p_name;
+	}
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+
+	public String getP_price() {
+		return p_price;
+	}
+
+	public void setP_price(String p_price) {
+		this.p_price = p_price;
+	}
+
+	public String getP_contents() {
+		return p_contents;
+	}
+
+	public void setP_contents(String p_contents) {
+		this.p_contents = p_contents;
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
+	}
+
+	public String getP_image1() {
+		return p_image1;
+	}
+
+	public void setP_image1(String p_image1) {
+		this.p_image1 = p_image1;
+	}
+
+	public String getP_image2() {
+		return p_image2;
+	}
+
+	public void setP_image2(String p_image2) {
+		this.p_image2 = p_image2;
+	}
+
+	public String getP_image3() {
+		return p_image3;
+	}
+
+	public void setP_image3(String p_image3) {
+		this.p_image3 = p_image3;
+	}
+
+	@Override
+	public String toString() {
+		return "MallDto [p_seq=" + p_seq + ", p_name=" + p_name + ", p_price=" + p_price + ", p_contents=" + p_contents
+				+ ", p_size=" + p_size + ", p_category=" + p_category + ", p_image1=" + p_image1 + ", p_image2="
+				+ p_image2 + ", p_image3=" + p_image3 + ", p_delyn=" + p_delyn + "]";
+	}
+
+
+}

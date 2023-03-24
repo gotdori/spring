@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<!--  원래 클래스명은 패키지까지 포함하기때문에 너무 길어서 짧은 별명을 만들어서 접근하기 위해 기술한다  -->
+	<typeAliases>
+<!--     	<typeAlias alias="GuestbookDto" type="com.kosa.mycompany.guestbook.GuestbookDto"/> -->
+<!--     	<typeAlias alias="BoardDto" type="com.kosa.myapp3.board.BoardDto"/> -->
+    	<typeAlias alias="Criteria" type="com.ds.damin.common.Criteria"/>
+    	<typeAlias alias="MallDto" type="com.ds.damin.mall.Criteria"/>
+    	<typeAlias alias="UserDto" type="com.ds.damin.user.UserDto"/>
+
+			
+	</typeAliases>
+
+	<mappers>
+	<!-- sql 쿼리 두는곳 Guestbook.xml 파일을 만들어야 한다. -->
+<!-- 	  <mapper resource=	"/com/kosa/mycompany/mapper/Guestbook.xml"/> -->
+<!-- 	  <mapper resource=	"/com/kosa/myapp3/mapper/Board.xml"/> -->
+	  <mapper resource=	"/com/ds/damin/mapper/Mall.xml"/>
+	  <mapper resource=	"/com/ds/damin/mapper/User.xml"/>
+
+	</mappers>
+	
+</configuration>

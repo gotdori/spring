@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<select id="User_getList" parameterType="UserDto"
+		resultType="UserDto">
+		select
+			A.U_SEQ 
+			,A.U_MANAGE 
+			,A.U_NAME 
+			,A.U_PHONE 
+			,A.U_ZIPCODE 
+			,A.U_ADDRESS1 
+			,A.U_ADDRESS2 
+			,A.U_MONEY 
+			,A.U_EMAIL 
+			,A.U_DELYN
+		from 
+			u_mall A 
+		where A.U_DELYN = 'N'  
+		order by A.u_seq 
+	</select>
+	
+	<insert id="User_insert" parameterType="UserDto">
+		<selectKey resultType="Integer" keyProperty="u_seq" order="BEFORE">
+			select nvl(max(u_seq), 0)+1 as u_seq
+			from u_mall
+		</selectKey>
+		insert into u_mall A(
+			A.U_SEQ
+			,A.U_MANAGE
+			,A.U_password
+			,A.U_password2
+			,A.U_NAME
+			,A.U_PHONE
+			,A.U_ZIPCODE
+			,A.U_ADDRESS1
+			,A.U_ADDRESS2
+			,A.U_money
+			,A.U_email
+			,A.U_delyn
+			)
+		values(
+			#{u_seq}
+			,'N'
+			,#{u_password}
+			,#{u_password2}
+			,#{u_name}
+			,#{u_phone}
+			,#{u_zipcode}
+			,#{u_address1}
+			,#{u_address2}
+			,#{u_money}
+			,#{u_email}
+			,'N'
+			)
+	</insert>
+	
+	<select id="User_getView" parameterType="UserDto" resultType="UserDto">
+		select
+			A.U_SEQ
+			,A.U_MANAGE
+			,A.U_NAME
+			,A.U_PHONE
+			,A.U_ZIPCODE
+			,A.U_ADDRESS1
+			,A.U_ADDRESS2
+			,A.U_money
+			,A.U_email
+			,A.U_delyn
+		from
+			u_mall A
+		where
+			A.u_seq = #{u_seq}
+	</select>
+	
+	<update id="User_update" parameterType="UserDto">
+		update u_mall a set
+			a.u_manage = #{u_manage}
+			,a.u_name = #{u_name}
+			,a.u_password = #{u_password}
+			,a.u_password2 = #{u_password2}
+			,a.u_phone = #{u_phone}
+			,a.u_zipcode = #{u_zipcode}
+			,a.u_address1 = #{u_address1}
+			,a.u_address2 = #{u_address2}
+			,a.u_money = #{u_money}
+			,a.u_email = #{u_email}
+			,a.u_delyn = #{u_delyn}
+		where a.u_seq = #{u_seq}
+	</update>
+	
+	<update id="User_delete" parameterType="UserDto">
+		update 
+			u_mall A
+		set
+			A.u_delyn = 'Y' 
+		where A.u_seq = #{u_seq}
+	</update>
+	
+	<select id="User_IdCheck" parameterType="UserDto" resultType="Integer">
+		select count(A.u_name) from u_mall A
+		where A.u_name=#{u_name}
+	</select>
+	
+		<select id="User_login" parameterType="UserDto" resultType="UserDto">
+			select
+			    *
+			from 
+				u_mall A
+			where A.u_name = #{u_name}
+	</select >
+	
+</mapper>

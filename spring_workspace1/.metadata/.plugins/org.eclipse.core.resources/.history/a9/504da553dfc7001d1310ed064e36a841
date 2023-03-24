@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mall">
+
+	<select id="Mall_getList" parameterType="MallDto"
+		resultType="MallDto">
+		select
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image1
+			,A.p_image2
+			,A.p_image3
+			,A.p_delyn
+		from
+			p_mall A
+		where A.p_delyn = 'N'
+		order by A.p_seq
+		
+	</select>
+
+	<select id="Mall_high_low_price"
+		resultType="MallDto">
+		select
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image1
+			,A.p_image2
+			,A.p_image3
+			,A.p_delyn
+		from
+			p_mall A
+		where A.p_delyn = 'N'
+		order by A.p_price
+		
+			select
+	     rn
+	    ,P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	(
+	select
+	     rownum rn
+	    ,P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	(
+	select 
+	    P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	    p_mall
+	    where p_delyn='N' order by p_price desc
+	)
+	where <![CDATA[rownum <=#{pageNum}*#{amount}]]>
+	)
+	where <![CDATA[rn >(#{pageNum}-1)*#{amount}]]>
+	
+		<select id="Mall_low_high_price"
+		resultType="MallDto">
+		select
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image1
+			,A.p_image2
+			,A.p_image3
+			,A.p_delyn
+		from
+			p_mall A
+		where A.p_delyn = 'N'
+		order by A.p_price
+		
+			select
+	     rn
+	    ,P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	(
+	select
+	     rownum rn
+	    ,P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	(
+	select 
+	    P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	    p_mall
+	    where p_delyn='N' order by p_price
+	)
+	where <![CDATA[rownum <=#{pageNum}*#{amount}]]>
+	)
+	where <![CDATA[rn >(#{pageNum}-1)*#{amount}]]>
+	</select>
+
+	<insert id="Mall_insert" parameterType="MallDto">
+		<selectKey resultType="Integer" keyProperty="p_seq" order="BEFORE">
+			select nvl(max(p_seq), 0)+1 as p_seq
+			from p_mall
+		</selectKey>
+		insert into p_mall A(
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image1	
+			,A.p_image2	
+			,A.p_image3	)
+		values(
+			#{p_seq}
+			,#{p_name}
+			,#{p_price}
+			,#{p_contents}
+			,#{p_size}
+			,#{p_country}
+			,#{p_image1} 
+			,#{p_image2} 
+			,#{p_image3} )
+	</insert>
+	
+	<select id="Mall_getView" parameterType="MallDto" resultType="MallDto">
+		select
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image1
+			,A.p_image2
+			,A.p_image3
+		from
+			p_mall A
+		where
+			A.p_seq = #{p_seq}
+	</select>
+	
+	<update id="Mall_update" parameterType="MallDto">
+		update p_mall A set
+			A.p_name = #{p_name}
+			,A.p_price = #{p_price}
+			,A.p_contents = #{p_contents}
+			,A.p_size = #{p_size}
+			,A.p_country = #{p_country}
+			,A.p_image1 = #{p_image1}
+			,A.p_image2 = #{p_image2}
+			,A.p_image3 = #{p_image3}
+		where A.p_seq = #{p_seq}
+	</update>
+	
+	<update id="Mall_delete" parameterType="MallDto">
+		update 
+			p_mall A
+		set
+			A.p_delyn = 'Y' 
+		where A.p_seq = #{p_seq}
+	</update>
+	
+		<select id="Mall_getListPaging" resultType="MallDto">
+	select
+	     rn
+	    ,P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	(
+	select
+	     rownum rn
+	    ,P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	(
+	select 
+	    P_SEQ
+	    ,P_NAME
+	    ,P_CONTENTS
+	    ,P_SIZE
+	    ,P_COUNTRY
+	    ,P_IMAGE1
+	    ,P_IMAGE2
+	    ,P_IMAGE3
+	    ,P_DELYN
+	    ,P_PRICE
+	from
+	    p_mall
+	    where p_delyn='N' order by p_seq desc
+	)
+	where <![CDATA[rownum <=#{pageNum}*#{amount}]]>
+	)
+	where <![CDATA[rn >(#{pageNum}-1)*#{amount}]]>
+	</select>
+	
+	<select id="Mall_getTotal" resultType="int">
+		select
+			count(*)
+		from
+			p_mall
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,137 @@
+package com.ds.damin.user;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.ds.damin.common.CommonConst;
+import com.ds.damin.common.FileUploadUtil;
+
+@Controller
+public class UserController {
+
+	@Resource(name = "UserService")
+	UserService service;
+	
+	@RequestMapping(value = "/user/list")
+	public String getList(UserDto dto, Model model) {
+		List<UserDto> list = new ArrayList<UserDto>();
+		list = service.getList(dto);
+		model.addAttribute("userList", list);
+
+		return "/user/u_list";
+	}
+
+	@RequestMapping(value = "/user/write")
+	public String write(Model model) {
+		UserDto dto2 = new UserDto(); //수정 할 때
+		model.addAttribute("UserDto", dto2);
+		return "/user/u_write";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/user/save")
+	public HashMap<String, Object> save(UserDto dto) {
+		service.insert(dto);
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("res", "등록되었습니다.");
+
+		return map;
+	}
+
+	@RequestMapping(value = "/user/update")
+	public String update(UserDto dto, Model model) {
+		UserDto tmmpdto = service.getView(dto);
+		model.addAttribute("UserDto", tmmpdto);
+
+		return "/user/u_write";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/user/update_save")
+	public HashMap<String, Object> update_save(UserDto dto) {
+		service.update(dto);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("res", "수정완료");
+
+		return map;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/user/delete")
+	public HashMap<String, Object> delete(UserDto dto) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		try {
+			service.delete(dto);
+
+			map.put("result", "ok");
+		} catch (Exception e) {
+			map.put("result", "no");
+			e.printStackTrace();
+		}
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/user/idcheck")
+	public HashMap<String, Object> idcheck(UserDto dto){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("result", service.idcheck(dto));
+		return map;
+	}
+	
+	@RequestMapping(value ="/user/login")
+	public String login(UserDto dto){
+		return "/user/u_login";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/user/longin_proc")
+	public HashMap<String, Object> longin_proc(UserDto dto, HttpServletRequest req){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		HttpSession session = req.getSession();
+		
+		UserDto resultDto = service.login(dto);
+		if(resultDto==null) {
+			map.put("result", "id_f");
+			return map;
+		}
+		else if(!resultDto.getU_password().equals(dto.getU_password())) {
+			map.put("result", "pw_f");
+		}
+		System.out.println("받아온 비밀번호 : " +resultDto.getU_password());
+		System.out.println("비교 할 비밀번호 : " +dto.getU_password());
+		session.setAttribute("u_name", resultDto.getU_name());
+		session.setAttribute("u_password", resultDto.getU_password());
+		
+		map.put("result", "success");
+		
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/user/logout")
+	Map<String, Object> logout(HttpServletRequest req) {
+		Map<String, Object> map = new HashMap<String, Object>();	
+		HttpSession session = req.getSession(false); //여기 안에 펄스를 넣으면 알아서 세션 값 있는지 확인해줌
+		session.invalidate(); // 세션내용 삭제
+		map.put("result", "로그아웃 되었습니다.");
+		
+		return map;
+	}
+}

@@ -1,0 +1,53 @@
+package com.ds.damin.common;
+
+
+public class Criteria {
+
+	private int pageNum = 0; // 현재 페이지
+	private int amount = 0; // 한 페이지 당 보여질 게시물 갯수
+	private String num = "1"; // 신상, 높은가격, 낮은가격 구분
+	private String p_category = "all"; //제품 카테고리(전체, 신발, 옷) 결정
+
+	public Criteria() {
+		this(1, 9);
+	}
+
+	public Criteria(int pageNum, int amount) {
+		super();
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
+
+	public String getP_category() {
+		return p_category;
+	}
+
+	public void setP_category(String p_category) {
+		this.p_category = p_category;
+	}
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+}

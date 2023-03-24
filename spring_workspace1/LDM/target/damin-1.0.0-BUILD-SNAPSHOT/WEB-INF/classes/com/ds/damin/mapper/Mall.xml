@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mall">
+
+	<select id="Mall_getList" parameterType="MallDto"
+		resultType="MallDto">
+		select
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image
+		from
+			mall A
+	</select>
+	
+	<insert id="Mall_insert" parameterType="MallDto">
+		insert into mall A(
+			A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image	)
+		values(
+			#{p_name}
+			,#{p_price}
+			,#{p_contents}
+			,#{p_size}
+			,#{p_country}
+			,#{p_image} )
+	</insert>
+	
+	<select id="Mall_getView" parameterType="MallDto" resultType="MallDto">
+		select
+			A.p_seq
+			,A.p_name
+			,A.p_price
+			,A.p_contents
+			,A.p_size
+			,A.p_country
+			,A.p_image
+		from
+			mall A
+		where
+			A.p_seq = #{p_seq}
+	</select>
+	
+	<update id="Mall_update" parameterType="MallDto">
+		update mall A set
+			A.p_name = #{p_name}
+			,A.p_price = #{p_price}
+			,A.p_contents = #{p_contents}
+			,A.p_size = #{p_size}
+			,A.p_country = #{p_country}
+			,A.p_image = #{p_image}
+		where A.p.seq = #{p_seq}
+	</update>
+	
+	<delete id="Mall_delete" parameterType="MallDto">
+		delete from
+			mall A 
+		where A.p_seq = #{p_seq}
+	</delete>
+	
+</mapper>

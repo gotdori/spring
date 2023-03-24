@@ -1,0 +1,17 @@
+package com.ds.damin.mall;
+
+import java.util.List;
+
+import com.ds.damin.common.Criteria;
+
+public interface MallDao {
+	List<MallDto> getList(MallDto dto); //페이징 안들어간 리스트(안쓰는거)
+	MallDto getView(MallDto dto);
+	void insert(MallDto dto);
+	void update(MallDto dto);
+	void delete(MallDto dto);
+	List<MallDto> H_L_getList(Criteria cri);
+	List<MallDto> L_H_getList(Criteria cri);
+	List<MallDto> getListPaging(Criteria cri);
+	int getTotal();
+}

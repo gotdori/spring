@@ -1,0 +1,66 @@
+package com.ds.damin.mall;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.ds.damin.common.Criteria;
+
+@Repository("mallDao")
+public class MallDaoimpl implements MallDao{
+	
+	@Autowired
+	SqlSessionTemplate sm;
+
+	@Override
+	public List<MallDto> getList(MallDto dto) {
+		List<MallDto> list = new ArrayList<MallDto>();
+		list = sm.selectList("Mall_getList", dto);
+		return list;
+	}
+
+	@Override
+	public MallDto getView(MallDto dto) {
+		return sm.selectOne("Mall_getView", dto);
+	}
+
+	@Override
+	public void insert(MallDto dto) {
+		sm.insert("Mall_insert", dto);
+	}
+
+	@Override
+	public void update(MallDto dto) {
+		sm.update("Mall_update", dto);
+	}
+
+	@Override
+	public void delete(MallDto dto) {
+		sm.update("Mall_delete", dto);
+	}
+
+	@Override
+	public List<MallDto> H_L_getList(Criteria cri) {
+		return sm.selectList("Mall_high_low_price", cri);
+	}
+
+	@Override
+	public List<MallDto> L_H_getList(Criteria cri) {
+		return sm.selectList("Mall_low_high_price", cri);
+	}
+
+	@Override
+	public List<MallDto> getListPaging(Criteria cri) {
+		System.out.println(cri);
+		return sm.selectList("Mall_getListPaging", cri);
+	}
+
+	@Override
+	public int getTotal() {
+		return sm.selectOne("Mall_getTotal");
+	}
+	
+}

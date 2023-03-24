@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	<mapper namespace="Comment">
+	<select id="Comment_getList" parameterType="CommentDto" resultType="CommentDto">
+select
+    board_seq
+    ,SEQ
+    ,USERID
+    ,COMMENTS
+    ,REGDATE
+    ,HIT
+    ,DELYN
+    ,rownum as rn
+from(
+select 
+    board_seq
+    ,seq
+    ,userid
+    ,comments
+    ,regdate
+    ,hit
+    ,delyn
+    
+from tb_comment order by seq)
+where delyn='N' and board_seq=#{board_seq}
+
+
+	</select>
+	
+	<insert id="Comment_insert" parameterType="CommentDto">
+	insert into tb_comment
+(
+    board_seq
+    ,SEQ
+    ,USERID
+    ,COMMENTS
+    ,REGDATE
+    ,delyn
+    
+) values
+(
+     #{seq}
+     ,(select nvl(max(seq),0)+1 as seq from tb_comment) 
+    ,#{userid}
+    ,#{comments}
+    ,sysdate
+    ,'N'
+    
+)
+	</insert>
+	
+	<update id="Comment_delete" parameterType="CommentDto">
+	update tb_comment 
+	set delyn = 'Y' 
+	where seq = #{seq}
+	</update>
+	
+</mapper>

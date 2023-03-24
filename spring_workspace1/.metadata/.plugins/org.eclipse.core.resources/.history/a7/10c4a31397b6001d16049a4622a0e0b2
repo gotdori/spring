@@ -1,0 +1,154 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.ds.damin.mall.MallDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="com.ds.damin.mall.*"%>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Detail View</title>
+<%@include file="../include/css.jsp" %>
+</head>
+
+<body>
+<%@include file="../include/nav.jsp" %>
+<%MallDto dto = (MallDto)request.getAttribute("mallgetView"); %>
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="row mb-4 align-items-center">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2><%=dto.getP_name()%></h2>
+          </div>
+        </div>
+      </div>
+    <form id="myform" name="myform">  
+	<input type="hidden" name="mode" id="mode" value="update"> 
+	<input type="hidden" name="p_seq" id="p_seq" value=""> 
+      <div class="site-section pb-0">
+        <div class="container">
+          <div class="row align-items-stretch">
+            <div class="col-md-8" data-aos="fade-up">
+              <img src="${ctx}/resources/assets/img/img_1_big.jpg" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
+              <div class="sticky-content">
+                <h3 class="h3"><%=dto.getP_name()%></h3>
+                <p class="mb-4"><span class="text-muted">Detail</span></p>
+
+                <div class="mb-5">
+                  <p><%=dto.getP_contents()%></p>
+
+                </div>
+
+                <h4 class="h4 mb-3">What I</h4>
+                <ul class="list-unstyled list-line mb-5">
+                  <li><%=dto.getP_price()%></li>
+                  <li><%=dto.getP_size()%></li>
+                  <li><%=dto.getP_country()%></li>
+                </ul>
+
+                <p><a href="${ctx}/mall/list" class="readmore">목록</a>   <a href="${ctx}/mall/update?seq=<%=dto.getP_seq() %>" id="btnUpdate" class="readmore">수정</a>  <a href="${ctx}/mall/delete?p_seq=<%=dto.getP_seq() %>" class="readmore">삭제</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+</form>
+    <!-- ======= Testimonials Section ======= -->
+    <section class="section pt-0">
+      <div class="container">
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial">
+                  <img src="${ctx}/resources/assets/img/person_1.jpg" alt="Image" class="img-fluid">
+                  <blockquote>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
+                      explicabo inventore.</p>
+                  </blockquote>
+                  <p>&mdash; Jean Hicks</p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial">
+                  <img src="${ctx}/resources/assets/img/person_2.jpg" alt="Image" class="img-fluid">
+                  <blockquote>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
+                      explicabo inventore.</p>
+                  </blockquote>
+                  <p>&mdash; Chris Stanworth</p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="mb-1">&copy; Copyright MyPortfolio. All Rights Reserved</p>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=MyPortfolio
+          -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+        <div class="col-sm-6 social text-md-end">
+          <a href="#"><span class="bi bi-twitter"></span></a>
+          <a href="#"><span class="bi bi-facebook"></span></a>
+          <a href="#"><span class="bi bi-instagram"></span></a>
+          <a href="#"><span class="bi bi-linkedin"></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="${ctx}/resources/assets/vendor/aos/aos.js"></script>
+  <script src="${ctx}/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${ctx}/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${ctx}/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="${ctx}/resources/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="${ctx}/resources/assets/js/main.js"></script>
+
+</body>
+</html>
+<script>
+
+$(()=>{
+	$("#btnUpdate").click(()=>{
+		$("#mode").val("update");
+		$("#p_seq").val(<%=dto.getP_seq() %>)
+		$("#myform").prop("action", "${ctx}/mall/update");
+		$("#myform").submit();
+	})
+})
+
+</script>

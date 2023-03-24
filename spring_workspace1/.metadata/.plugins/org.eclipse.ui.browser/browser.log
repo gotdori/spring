@@ -1,0 +1,62 @@
+
+2월 01, 2023 15:40:04.87 NEW SESSION
+2월 01, 2023 15:40:04.87 [6924:6180:0201/154004.559:ERROR:device_event_log_impl.cc(215)] [15:40:04.559] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+2월 01, 2023 15:40:04.87 [6924:6180:0201/154004.570:ERROR:device_event_log_impl.cc(215)] [15:40:04.570] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 01, 2023 15:40:59.61 [6924:9104:0201/154059.614:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 01, 2023 16:07:07.53 [6924:6180:0201/160707.530:ERROR:interface_endpoint_client.cc(695)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+2월 02, 2023 09:34:03.40 NEW SESSION
+2월 02, 2023 09:34:03.40 [8080:5172:0202/093403.406:ERROR:device_event_log_impl.cc(215)] [09:34:03.406] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+2월 02, 2023 09:35:00.27 [8080:9848:0202/093500.274:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 02, 2023 13:10:00.86 [8080:5172:0202/131000.866:ERROR:gpu_process_host.cc(991)] GPU process exited unexpectedly: exit_code=34
+2월 02, 2023 14:35:00.03 [8080:3604:0202/143500.032:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 02, 2023 15:24:37.85 [8080:5172:0202/152437.859:ERROR:CONSOLE(1)] "Uncaught (in promise) RangeError: Invalid line number 6747 in 183-line document", source: devtools://devtools/bundled/devtools-frontend/front_end/third_party/codemirror.next/chunk/codemirror.js (1)
+2월 02, 2023 15:51:43.76 [9408:908:0202/155143.768:ERROR:device_event_log_impl.cc(215)] [15:51:43.768] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+2월 02, 2023 16:12:13.15 [6056:5804:0202/161213.151:ERROR:device_event_log_impl.cc(215)] [16:12:13.151] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+2월 02, 2023 16:13:10.01 [6056:2076:0202/161310.018:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 02, 2023 16:56:06.20 [6056:5804:0202/165606.199:ERROR:interface_endpoint_client.cc(695)] Message 1 rejected by interface blink.mojom.WidgetHost
+2월 02, 2023 16:56:06.20 [6056:5804:0202/165606.199:ERROR:interface_endpoint_client.cc(695)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+2월 03, 2023 14:54:13.67 NEW SESSION
+2월 03, 2023 14:54:13.67 [13624:9632:0203/145413.579:ERROR:device_event_log_impl.cc(215)] [14:54:13.579] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+2월 03, 2023 14:55:10.81 [13624:3616:0203/145510.810:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 03, 2023 15:31:48.15 [13624:12348:0203/153148.158:ERROR:cert_verify_proc_builtin.cc(676)] CertVerifyProcBuiltin for classicgameworld.co.kr failed:
+2월 03, 2023 15:31:48.15 ----- Certificate i=0 (O=Default Company Ltd,L=Default City,C=KR) -----
+2월 03, 2023 15:31:48.15 ERROR: No matching issuer found
+2월 03, 2023 15:31:48.16 
+2월 03, 2023 15:31:48.16 
+
+2월 08, 2023 09:34:31.55 NEW SESSION
+2월 08, 2023 09:34:31.55 [6196:7704:0208/093431.557:ERROR:device_event_log_impl.cc(215)] [09:34:31.556] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+2월 08, 2023 09:35:28.45 [6196:5384:0208/093528.458:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 08, 2023 10:33:08.19 [6196:6896:0208/103308.198:ERROR:cert_verify_proc_builtin.cc(676)] CertVerifyProcBuiltin for api.lunamedia.io failed:
+2월 08, 2023 10:33:08.21 ----- Certificate i=0 (CN=*.lunamedia.io) -----
+2월 08, 2023 10:33:08.21 ERROR: Time is after notAfter
+2월 08, 2023 10:33:08.21 
+2월 08, 2023 10:33:08.21 
+2월 08, 2023 10:33:13.97 [6196:8892:0208/103313.974:ERROR:cert_verify_proc_builtin.cc(676)] CertVerifyProcBuiltin for global.ib-ibi.com failed:
+2월 08, 2023 10:33:13.97 ----- Certificate i=0 (CN=*.ib-ibi.com,O=KBM Group LLC,L=Louisville,ST=Colorado,C=US) -----
+2월 08, 2023 10:33:13.97 ERROR: Time is after notAfter
+2월 08, 2023 10:33:13.97 
+2월 08, 2023 10:33:13.97 
+2월 08, 2023 10:33:18.12 [6196:9916:0208/103318.123:ERROR:cert_verify_proc_builtin.cc(676)] CertVerifyProcBuiltin for global.ib-ibi.com failed:
+2월 08, 2023 10:33:18.12 ----- Certificate i=0 (CN=*.ib-ibi.com,O=KBM Group LLC,L=Louisville,ST=Colorado,C=US) -----
+2월 08, 2023 10:33:18.12 ERROR: Time is after notAfter
+2월 08, 2023 10:33:18.12 
+2월 08, 2023 10:33:18.12 
+2월 08, 2023 11:02:12.91 [6196:7704:0208/110212.910:ERROR:gpu_process_host.cc(991)] GPU process exited unexpectedly: exit_code=34
+2월 08, 2023 13:03:06.95 [6196:7704:0208/130306.950:ERROR:device_event_log_impl.cc(215)] [13:03:06.950] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+2월 08, 2023 13:03:06.96 [6196:7704:0208/130306.957:ERROR:device_event_log_impl.cc(215)] [13:03:06.958] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+2월 08, 2023 14:35:28.46 [6196:6280:0208/143528.459:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+2월 08, 2023 16:49:10.97 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 16:51:37.14 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 16:53:20.90 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 17:06:25.86 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 17:06:31.33 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 17:06:53.87 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 17:22:05.68 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 17:25:35.55 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+2월 08, 2023 17:48:21.57 [6196:7704:0208/174821.573:ERROR:gpu_process_host.cc(991)] GPU process exited unexpectedly: exit_code=34
+
+3월 02, 2023 18:16:49.131 NEW SESSION
+3월 02, 2023 18:16:49.131 [11056:8576:0302/181649.129:ERROR:interface_endpoint_client.cc(695)] Message 0 rejected by interface blink.mojom.WidgetHost

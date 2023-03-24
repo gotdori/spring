@@ -244,6 +244,7 @@
 			count(*)
 		from
 			p_mall
+		where p_delyn='N' and p_category in ${cate}
 	</select>
 	
 	

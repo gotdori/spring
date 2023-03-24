@@ -54,6 +54,10 @@
 						<%
 						}
 						%>
+						<div style="margin-top: 20px; text-align: right;" >
+							<a href="${ctx }/mall/write" class="readmore" >제품등록</a> 
+						</div>
+						
 					</div>
 		</section>
 		<!-- End  Works Section -->
@@ -71,7 +75,7 @@
 
 					<!-- 각 번호 페이지 버튼 -->
 					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li id="pageInfo_btn" style="display: block; margin: 10px"><a href="#" onclick="asd(${num})" class="pageInfo_a"> ${num} </a></li>
+						<li id="pageInfo_btn" style="display: block; margin: 10px"><a href="#" onclick="btnPG(${num})" class="pageInfo_a"> ${num} </a></li>
 
 					</c:forEach>
 
@@ -130,7 +134,7 @@
 </body>
 </html>
 <script>
-function asd(num) {
+function btnPG(num) {
 	let moveForm = $("#moveForm");
    	$("#pageNum").val(num);
        moveForm.prop("action", "${ctx}/mall/list");
@@ -144,12 +148,6 @@ function sort(num) {
        moveForm.submit();
 }
 
-function category(cate) {
-	let moveForm = $("#moveForm");
-   		$("#pageNum").val("1");
-   		$("#cate").val(cate);
-   		moveForm.prop("action", "${ctx}/mall/list");
-   		moveForm.submit();
-}
+
 
 </script>

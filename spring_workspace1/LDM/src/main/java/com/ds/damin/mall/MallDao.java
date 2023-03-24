@@ -13,5 +13,5 @@ public interface MallDao {
 	List<MallDto> H_L_getList(Criteria cri);
 	List<MallDto> L_H_getList(Criteria cri);
 	List<MallDto> getListPaging(Criteria cri);
-	int getTotal();
+	int getTotal(Criteria cri);
 }

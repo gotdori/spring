@@ -58,8 +58,8 @@ public class MallDaoimpl implements MallDao{
 	}
 
 	@Override
-	public int getTotal() {
-		return sm.selectOne("Mall_getTotal");
+	public int getTotal(Criteria cri) {
+		return sm.selectOne("Mall_getTotal", cri);
 	}
 	
 }

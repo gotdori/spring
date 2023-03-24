@@ -115,9 +115,7 @@ public class UserController {
 			map.put("result", "pw_f");
 			return map;
 		}
-		session.setAttribute("u_name", resultDto.getU_name());
-		session.setAttribute("u_password", resultDto.getU_password());
-		
+		session.setAttribute("u_info", resultDto);
 		map.put("result", "success");
 		
 		return map;
@@ -129,7 +127,7 @@ public class UserController {
 		Map<String, Object> map = new HashMap<String, Object>();	
 		HttpSession session = req.getSession(false); //여기 안에 펄스를 넣으면 알아서 세션 값 있는지 확인해줌
 		session.invalidate(); // 세션내용 삭제
-		map.put("result", "로그아웃 되었습니다.");
+		map.put("result", "success");
 		
 		return map;
 	}

@@ -11,5 +11,5 @@ public interface MallService {
 	void update(MallDto dto);
 	void delete(MallDto dto);
 	List<MallDto> getListPaging(Criteria cri);
-	int getTotal();
+	int getTotal(Criteria cri);
 }

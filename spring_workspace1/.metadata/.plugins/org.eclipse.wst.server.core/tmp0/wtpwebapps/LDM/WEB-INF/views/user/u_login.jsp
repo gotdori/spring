@@ -81,7 +81,6 @@ $("#btnLogin").click(()=>{
 			return;
 		}
 		else if(r.result=="pw_f"){
-			alert('dd');
 			$('#pw_fail').css("display", "block");
 			return;
 		}

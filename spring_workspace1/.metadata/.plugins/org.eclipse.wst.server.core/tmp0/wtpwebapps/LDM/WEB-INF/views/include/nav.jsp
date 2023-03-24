@@ -30,13 +30,13 @@
 				</div>
 				<div class="col-md-2 " style="text-align: right">
 					<ul class="custom-menu align-items-end">
-						<c:if test="${u_name == null}">
+						<c:if test="${u_info == null}">
 						<li><a href="${ctx}/user/write">회원가입</a></li>
 						<li><a href="${ctx}/user/login">로그인</a></li>
 						</c:if>
 						
-						<c:if test="${u_name != null}">
-						<li><a href="#">로그아웃</a></li>
+						<c:if test="${u_info != null}">
+						<li><a href="#" id="btnLogout">로그아웃</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -47,7 +47,9 @@
 	<nav class="navbar navbar-light custom-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="${ctx}/mall/list">NEW BALANCE</a> 
+			<c:if test="${u_name != null}">
 			<span>${u_name}님 반갑습니다.</span> 
+			</c:if>
 			<a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
 				<span></span>
 			</a>
@@ -57,5 +59,54 @@
 </body>
 </html>
 <script>
+// function btnLogout(){  // 온클릭으로 함수 만들어서 할 때 
+// 	$.ajax({
+// 		url:"${ctx}/user/logout",
+// 		method:"POST",
+// 		dataType:"json"
+// 	})
+// 	.done((r)=>{
+// 		if(r.result=="success"){
+// 			alert("로그아웃 되었습니다.");
+// 			location.href="${ctx}/mall/list";
+// 		} else {
+// 			alert("로그아웃 실패");
+// 		}
+// 	})
+// 	.faile((status, res, error)=>{
+// 		console.log(status);
+// 		console.log(error);
+// 	})
+// }
 
+$(()=>{
+	$("#btnLogout").click(()=>{
+	$.ajax({
+		url:"${ctx}/user/logout",
+		method:"POST",
+		dataType:"json"
+	})
+	.done((r)=>{
+		if(r.result=="success"){
+			alert("로그아웃 되었습니다.");
+			location.href="${ctx}/mall/list";
+		} else {
+			alert("로그아웃 실패");
+		}
+	})
+	.faile((status, res, error)=>{
+		console.log(status);
+		console.log(error);
+	})
+})
+})
+
+function category(cate) {
+	let moveForm = $("#moveForm");
+		location.href="${ctx}/mall/list?cate="+cate;
+   		$("#pageNum").val("1");
+   		$("#cate").val(cate);
+   		moveForm.prop("action", "${ctx}/mall/list");
+   		moveForm.submit();
+}
 </script>

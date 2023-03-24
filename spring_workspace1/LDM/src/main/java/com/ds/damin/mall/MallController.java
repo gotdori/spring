@@ -31,7 +31,7 @@ public class MallController {
 		List<MallDto> list = new ArrayList<MallDto>();
 		list = service.getListPaging(cri);
 		
-		int total = service.getTotal();
+		int total = service.getTotal(cri);
 		PagerMakerDto pdto = new PagerMakerDto(cri, total);
 		model.addAttribute("pageMaker", pdto);
 		model.addAttribute("mallList", list);
@@ -136,7 +136,6 @@ public class MallController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		try {
 			service.delete(dto);
-
 			map.put("result", "ok");
 		} catch (Exception e) {
 			map.put("result", "no");

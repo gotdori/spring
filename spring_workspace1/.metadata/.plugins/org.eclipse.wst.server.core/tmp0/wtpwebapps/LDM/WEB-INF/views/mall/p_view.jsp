@@ -1,3 +1,4 @@
+<%@page import="com.ds.damin.user.UserDto"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.ds.damin.mall.MallDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,7 +17,8 @@
 <body>
 <%@include file="../include/nav.jsp" %>
 <%MallDto dto = (MallDto)request.getAttribute("mallgetView");
-System.out.println(dto);%>
+UserDto udto = (UserDto)session.getAttribute("u_info");
+%>
   <main id="main">
     <section class="section">
       <div class="container">
@@ -71,55 +73,21 @@ System.out.println(dto);%>
                   <li><%=dto.getP_size()%></li>
                   <li><%=dto.getP_category()%></li>
                 </ul>
-
-                <p><a href="${ctx}/mall/list" class="readmore">목록</a>   <a href="#" id="btnUpdate" class="readmore">수정</a>  <a id="btnDelete" href="none" class="readmore">삭제</a></p>
+				
+                <p><a href="${ctx}/mall/list" class="readmore">목록</a> 
+                <%if(udto!= null && udto.getU_manage().equals("Y")){ %>
+                  <a href="#" id="btnUpdate" class="readmore">수정</a>  <a id="btnDelete" href="none" class="readmore">삭제</a></p>
+                 <%}else{ %>
+                  <a href="#" id="btnBy" onclick="alert('준비중입니다.')" class="readmore">장바구니</a> 
+                  <a href="#" id="btnBy" onclick="alert('준비중입니다.')" class="readmore">구매하기</a> 
+                  <%} %>
+                  
               </div>
             </div>
           </div>
         </div>
     </section>
 </form>
-    <!-- ======= Testimonials Section ======= -->
-    <section class="section pt-0">
-      <div class="container">
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial">
-                  <img src="${ctx}/resources/assets/img/person_1.jpg" alt="Image" class="img-fluid">
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
-                      explicabo inventore.</p>
-                  </blockquote>
-                  <p>&mdash; Jean Hicks</p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial">
-                  <img src="${ctx}/resources/assets/img/person_2.jpg" alt="Image" class="img-fluid">
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
-                      explicabo inventore.</p>
-                  </blockquote>
-                  <p>&mdash; Chris Stanworth</p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-  </main><!-- End #main -->
   
 <%@include file="../include/footer.jsp"  %>
 </body>
